@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lxrlxrlxr.github.io/"/>
-  <updated>2020-04-11T02:30:00.806Z</updated>
+  <updated>2020-05-18T05:36:45.819Z</updated>
   <id>https://lxrlxrlxr.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue-route</title>
+    <link href="https://lxrlxrlxr.github.io/2020/05/18/vue-route/"/>
+    <id>https://lxrlxrlxr.github.io/2020/05/18/vue-route/</id>
+    <published>2020-05-18T05:36:02.569Z</published>
+    <updated>2020-05-18T05:36:45.819Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h1><p>[toc]</p><h4 id="本地安装"><a href="#本地安装" class="headerlink" title="本地安装"></a>本地安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`npm install vue-router`</span><br></pre></td></tr></table></figure><p>main.js中</p><ol><li>导入</li><li>use一下</li><li>创建路由</li><li>挂载到vue实例上</li></ol><h4 id="配置规则"><a href="#配置规则" class="headerlink" title="配置规则"></a>配置规则</h4><p>通过routes属性配置<code>地址</code>和路由管理的<code>组件</code>关系</p><p>main.js中</p><ol><li>导入组件</li><li>routes属性中进行配置关系</li><li>path：设置地址</li><li>component：设置组件</li><li>可以配置多个</li></ol><h4 id="路由出口"><a href="#路由出口" class="headerlink" title="路由出口"></a>路由出口</h4><p>希望匹配到的组件显示在哪里，就在哪里设置一个<code>router-view</code>标签</p><h4 id="声明式导航"><a href="#声明式导航" class="headerlink" title="声明式导航"></a>声明式导航</h4><p>通过<code>router-link</code>标签设置<code>to</code>属性为地址可以实现点击切换</p><h4 id="编程式导航"><a href="#编程式导航" class="headerlink" title="编程式导航"></a>编程式导航</h4><p>组件中通过<code>this.$router.push(地址)</code>可以通过代码实现切换</p><h4 id="路由传参"><a href="#路由传参" class="headerlink" title="路由传参"></a>路由传参</h4><p>在地址后面写上<code>?</code>分隔：分隔两段数据</p><p>通过<code>key = value &amp; key2 = value</code>的方式添加参数，value为获取数据的值</p><p>组件中通过<code>this.$route.query</code>访问对应的<code>key</code>即可获取数据</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;vue-router&quot;&gt;&lt;a href=&quot;#vue-router&quot; class=&quot;headerlink&quot; title=&quot;vue-router&quot;&gt;&lt;/a&gt;vue-router&lt;/h1&gt;&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h4 id=&quot;本地安装&quot;&gt;&lt;a href=&quot;#本地安装
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>CSS布局</title>
