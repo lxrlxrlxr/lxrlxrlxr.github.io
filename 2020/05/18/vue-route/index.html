@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang=en>
 <head>
+	<script src="http://echarts.baidu.com/dist/echarts.common.min.js"></script>
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +15,7 @@
 <meta property="og:description" content="vue-router[toc] 本地安装1&#96;npm install vue-router&#96;  main.js中  导入 use一下 创建路由 挂载到vue实例上  配置规则通过routes属性配置地址和路由管理的组件关系 main.js中  导入组件 routes属性中进行配置关系 path：设置地址 component：设置组件 可以配置多个  路由出口希望匹配到的组件显示在哪里，就在哪里设置一">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-18T05:36:02.569Z">
-<meta property="article:modified_time" content="2020-05-18T05:36:45.819Z">
+<meta property="article:modified_time" content="2020-08-21T08:32:51.612Z">
 <meta property="article:author" content="大瑞">
 <meta name="twitter:card" content="summary">
     
@@ -57,8 +58,7 @@
     
 <script src="/lib/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="lxr_blog" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div class="banner">
@@ -200,7 +200,77 @@
 <h4 id="路由传参"><a href="#路由传参" class="headerlink" title="路由传参"></a>路由传参</h4><p>在地址后面写上<code>?</code>分隔：分隔两段数据</p>
 <p>通过<code>key = value &amp; key2 = value</code>的方式添加参数，value为获取数据的值</p>
 <p>组件中通过<code>this.$route.query</code>访问对应的<code>key</code>即可获取数据</p>
+<div id="echarts8186" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('echarts8186'));
 
+        // 指定图表的配置项和数据
+        var option = {
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    legend: {
+        data:['利润', '支出', '收入']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    yAxis : [
+        {
+            type : 'category',
+            axisTick : {show: false},
+            data : ['周一','周二','周三','周四','周五','周六','周日']
+        }
+    ],
+    series : [
+        {
+            name:'利润',
+            type:'bar',
+            itemStyle : {
+                normal: {
+                    label: {show: true, position: 'inside'}
+                }
+            },
+            data:[200, 170, 240, 244, 200, 220, 210]
+        },
+        {
+            name:'收入',
+            type:'bar',
+            stack: '总量',
+            itemStyle: {
+                normal: {
+                    label : {show: true}
+                }
+            },
+            data:[320, 302, 341, 374, 390, 450, 420]
+        },
+        {
+            name:'支出',
+            type:'bar',
+            stack: '总量',
+            itemStyle: {normal: {
+                label : {show: true, position: 'left'}
+            }},
+            data:[-120, -132, -101, -134, -190, -230, -210]
+        }
+    ]
+};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+</script>
   </div>
 </article>
 
