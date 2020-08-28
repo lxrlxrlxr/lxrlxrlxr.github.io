@@ -1,40 +1,350 @@
-extends base
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="My New Post[toc] 一、官网安装稳定版本nodehttps:&#x2F;&#x2F;nodejs.org&#x2F;zh-cn&#x2F; 检查是否安装好 1node -v    二、注册github选择create a project  建好以后做一个测试，点击create a new file 新建一个index.html文件  保存提交，点击commit new file 浏览器中打开lxrlxrlxr2.githu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="My New Post">
+<meta property="og:url" content="https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/index.html">
+<meta property="og:site_name" content="lxr_blog">
+<meta property="og:description" content="My New Post[toc] 一、官网安装稳定版本nodehttps:&#x2F;&#x2F;nodejs.org&#x2F;zh-cn&#x2F; 检查是否安装好 1node -v    二、注册github选择create a project  建好以后做一个测试，点击create a new file 新建一个index.html文件  保存提交，点击commit new file 浏览器中打开lxrlxrlxr2.githu">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://lxrlxrlxr.github.io/2020/04/06/src/git1.png">
+<meta property="og:image" content="e:%5Cmd%5Cpic%5Cgit2.png">
+<meta property="og:image" content="e:%5Cmd%5Cpic%5Cgit4.png">
+<meta property="article:published_time" content="2020-04-06T02:39:56.000Z">
+<meta property="article:modified_time" content="2020-04-29T07:55:33.398Z">
+<meta property="article:author" content="大瑞">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lxrlxrlxr.github.io/2020/04/06/src/git1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>My New Post</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-block title
-  title= page.title + " | " + config.title
+    
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
 
-block main
+    
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
 
-  // gallery that comes before the header
-  if page.photos
-     if page.photos.length
-      .article-gallery
-        .article-gallery-photos.container
-          for photo in page.photos
-            a.article-gallery-img.fancybox(href=url_for(photo), rel="gallery_" + page._id)
-              img(src=url_for(photo), itemprop="image")
+    
+<link rel="stylesheet" href="/css/style.css">
 
-  .wrapper
-    .container.post-header
-      h1: = page.title
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/lib/jquery/jquery.min.js"></script>
 
-  .wrapper
-    .container.meta
-      .post-time= page.date.format(config.date_format)
-      if (page.categories && page.categories.length)
-        .post-categories
-          != list_categories(page.categories, {show_count: false, class: 'post-category', style: 'none', separator: '>'})
-      if (page.tags && page.tags.length)
-        .post-tags
-          != list_tags(page.tags, {show_count: false, class: 'post-tag', style:'none', separator:'/'})
+<meta name="generator" content="Hexo 4.2.0"></head>
+<!-- <script src="http://echarts.baidu.com/dist/echarts.common.min.js"></script> -->
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">lxr_blog</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/home/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/tzvetkov75" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/04/11/CSS%E5%B8%83%E5%B1%80/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/04/04/hello-world/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/" target="_blank" rel="noopener"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/&text=My New Post" target="_blank" rel="noopener"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/&title=My New Post" target="_blank" rel="noopener"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/&is_video=false&description=My New Post" target="_blank" rel="noopener"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=My New Post&body=Check out this article: https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/&title=My New Post" target="_blank" rel="noopener"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/&title=My New Post" target="_blank" rel="noopener"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/&title=My New Post" target="_blank" rel="noopener"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/&title=My New Post" target="_blank" rel="noopener"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/&name=My New Post&description=" target="_blank" rel="noopener"><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#My-New-Post"><span class="toc-number">1.</span> <span class="toc-text">My New Post</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、官网安装稳定版本node"><span class="toc-number">1.0.1.</span> <span class="toc-text">一、官网安装稳定版本node</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、注册github"><span class="toc-number">1.0.2.</span> <span class="toc-text">二、注册github</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、官网下载git"><span class="toc-number">1.0.3.</span> <span class="toc-text">三、官网下载git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、githubSSH配置"><span class="toc-number">1.0.4.</span> <span class="toc-text">四、githubSSH配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、本地hexo"><span class="toc-number">1.0.5.</span> <span class="toc-text">五、本地hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、hexo发布到github上"><span class="toc-number">1.0.6.</span> <span class="toc-text">六、hexo发布到github上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、换主题"><span class="toc-number">1.0.7.</span> <span class="toc-text">七、换主题</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        My New Post
+    </h1>
 
 
-  article
-    .container.post
-      != page.content
 
-    // comment system
-    .container
-      hr
-      include _partial/comments
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">lxr_blog</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2020-04-06T02:39:56.000Z" itemprop="datePublished">2020-04-06</time>
+    </div>
 
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="My-New-Post"><a href="#My-New-Post" class="headerlink" title="My New Post"></a>My New Post</h1><p>[toc]</p>
+<h3 id="一、官网安装稳定版本node"><a href="#一、官网安装稳定版本node" class="headerlink" title="一、官网安装稳定版本node"></a>一、官网安装稳定版本node</h3><p><a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">https://nodejs.org/zh-cn/</a></p>
+<p>检查是否安装好</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="二、注册github"><a href="#二、注册github" class="headerlink" title="二、注册github"></a>二、注册github</h3><p>选择<code>create a project</code></p>
+<p><img src="../src/git1.png" alt="image"></p>
+<p>建好以后做一个测试，点击<code>create a new file</code></p>
+<p>新建一个<code>index.html</code>文件</p>
+<p><img src="E:%5Cmd%5Cpic%5Cgit2.png" alt=""></p>
+<p>保存提交，点击<code>commit new file</code></p>
+<p>浏览器中打开<code>lxrlxrlxr2.github.io</code></p>
+<h3 id="三、官网下载git"><a href="#三、官网下载git" class="headerlink" title="三、官网下载git"></a>三、官网下载git</h3><p><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a></p>
+<p>检查是否安装好</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="四、githubSSH配置"><a href="#四、githubSSH配置" class="headerlink" title="四、githubSSH配置"></a>四、githubSSH配置</h3><ul>
+<li><p>安装路径下打开git</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"140*****62@qq.com"</span></span><br></pre></td></tr></table></figure>
+
+<p>可以直接一直回车</p>
+</li>
+<li><p>打开github / settings / SSH and GPG keys</p>
+<p>点击<code>New SSH key</code></p>
+<p>title : 随便写</p>
+<p>key : <code>C:\Users\Alice\.ssh\id_rsa.pub</code></p>
+<p>点击<code>Add</code>，即完成</p>
+</li>
+</ul>
+<h3 id="五、本地hexo"><a href="#五、本地hexo" class="headerlink" title="五、本地hexo"></a>五、本地hexo</h3><p>官方文档 <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">https://hexo.io/zh-cn/</a></p>
+<p>新建文件夹，cmd到文件夹内</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="六、hexo发布到github上"><a href="#六、hexo发布到github上" class="headerlink" title="六、hexo发布到github上"></a>六、hexo发布到github上</h3><ul>
+<li><p>将文件夹在编辑器中打开</p>
+</li>
+<li><p>打开_config.yml文件</p>
+<ul>
+<li><p>修改<code># Deployment</code></p>
+<p><code>repo</code>在仓库中复制链接🔗</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https:&#x2F;&#x2F;github.com&#x2F;lxrlxrlxr&#x2F;lxrlxrlxr2.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改<code># URL</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url: https://lxrlxrlxr2.github.io</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改<code># Site</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">title: lxr_blog</span><br><span class="line">author: 大瑞</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>本地执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s -p</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装插件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置github信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email <span class="string">"140*****62@qq.com"</span></span><br><span class="line">git config --global user.name <span class="string">"lxr"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成提交命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p><img src="E:%5Cmd%5Cpic%5Cgit4.png" alt=""></p>
+</li>
+<li><p>打开网址即可</p>
+</li>
+</ul>
+<h3 id="七、换主题"><a href="#七、换主题" class="headerlink" title="七、换主题"></a>七、换主题</h3><p><a href="https://hexo.bootcss.com/themes/" target="_blank" rel="noopener">https://hexo.bootcss.com/themes/</a></p>
+
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/home/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/tzvetkov75" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#My-New-Post"><span class="toc-number">1.</span> <span class="toc-text">My New Post</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、官网安装稳定版本node"><span class="toc-number">1.0.1.</span> <span class="toc-text">一、官网安装稳定版本node</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、注册github"><span class="toc-number">1.0.2.</span> <span class="toc-text">二、注册github</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、官网下载git"><span class="toc-number">1.0.3.</span> <span class="toc-text">三、官网下载git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、githubSSH配置"><span class="toc-number">1.0.4.</span> <span class="toc-text">四、githubSSH配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、本地hexo"><span class="toc-number">1.0.5.</span> <span class="toc-text">五、本地hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、hexo发布到github上"><span class="toc-number">1.0.6.</span> <span class="toc-text">六、hexo发布到github上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、换主题"><span class="toc-number">1.0.7.</span> <span class="toc-text">七、换主题</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/" target="_blank" rel="noopener"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/&text=My New Post" target="_blank" rel="noopener"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/&title=My New Post" target="_blank" rel="noopener"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/&is_video=false&description=My New Post" target="_blank" rel="noopener"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=My New Post&body=Check out this article: https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/&title=My New Post" target="_blank" rel="noopener"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/&title=My New Post" target="_blank" rel="noopener"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/&title=My New Post" target="_blank" rel="noopener"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/&title=My New Post" target="_blank" rel="noopener"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/&name=My New Post&description=" target="_blank" rel="noopener"><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 大瑞
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/home/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/tzvetkov75" target="_blank" rel="noopener">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+      
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>
