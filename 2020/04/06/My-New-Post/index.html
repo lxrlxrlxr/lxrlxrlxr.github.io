@@ -1,296 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+extends base
 
-  
-  <title>My New Post | lxr_blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="My New Post[toc] 一、官网安装稳定版本nodehttps:&#x2F;&#x2F;nodejs.org&#x2F;zh-cn&#x2F; 检查是否安装好 1node -v    二、注册github选择create a project  建好以后做一个测试，点击create a new file 新建一个index.html文件  保存提交，点击commit new file 浏览器中打开lxrlxrlxr2.githu">
-<meta property="og:type" content="article">
-<meta property="og:title" content="My New Post">
-<meta property="og:url" content="https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/index.html">
-<meta property="og:site_name" content="lxr_blog">
-<meta property="og:description" content="My New Post[toc] 一、官网安装稳定版本nodehttps:&#x2F;&#x2F;nodejs.org&#x2F;zh-cn&#x2F; 检查是否安装好 1node -v    二、注册github选择create a project  建好以后做一个测试，点击create a new file 新建一个index.html文件  保存提交，点击commit new file 浏览器中打开lxrlxrlxr2.githu">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://lxrlxrlxr.github.io/2020/04/06/src/git1.png">
-<meta property="og:image" content="e:%5Cmd%5Cpic%5Cgit2.png">
-<meta property="og:image" content="e:%5Cmd%5Cpic%5Cgit4.png">
-<meta property="article:published_time" content="2020-04-06T02:39:56.000Z">
-<meta property="article:modified_time" content="2020-04-29T07:55:33.398Z">
-<meta property="article:author" content="大瑞">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://lxrlxrlxr.github.io/2020/04/06/src/git1.png">
-  
-    <link rel="alternate" href="/atom.xml" title="lxr_blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+block title
+  title= page.title + " | " + config.title
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+block main
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">lxr_blog</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://lxrlxrlxr.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-My-New-Post" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/06/My-New-Post/" class="article-date">
-  <time datetime="2020-04-06T02:39:56.000Z" itemprop="datePublished">2020-04-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      My New Post
-    </h1>
-  
+  // gallery that comes before the header
+  if page.photos
+     if page.photos.length
+      .article-gallery
+        .article-gallery-photos.container
+          for photo in page.photos
+            a.article-gallery-img.fancybox(href=url_for(photo), rel="gallery_" + page._id)
+              img(src=url_for(photo), itemprop="image")
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="My-New-Post"><a href="#My-New-Post" class="headerlink" title="My New Post"></a>My New Post</h1><p>[toc]</p>
-<h3 id="一、官网安装稳定版本node"><a href="#一、官网安装稳定版本node" class="headerlink" title="一、官网安装稳定版本node"></a>一、官网安装稳定版本node</h3><p><a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">https://nodejs.org/zh-cn/</a></p>
-<p>检查是否安装好</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+  .wrapper
+    .container.post-header
+      h1: = page.title
+
+  .wrapper
+    .container.meta
+      .post-time= page.date.format(config.date_format)
+      if (page.categories && page.categories.length)
+        .post-categories
+          != list_categories(page.categories, {show_count: false, class: 'post-category', style: 'none', separator: '>'})
+      if (page.tags && page.tags.length)
+        .post-tags
+          != list_tags(page.tags, {show_count: false, class: 'post-tag', style:'none', separator:'/'})
 
 
+  article
+    .container.post
+      != page.content
 
-<h3 id="二、注册github"><a href="#二、注册github" class="headerlink" title="二、注册github"></a>二、注册github</h3><p>选择<code>create a project</code></p>
-<p><img src="../src/git1.png" alt="image"></p>
-<p>建好以后做一个测试，点击<code>create a new file</code></p>
-<p>新建一个<code>index.html</code>文件</p>
-<p><img src="E:%5Cmd%5Cpic%5Cgit2.png" alt=""></p>
-<p>保存提交，点击<code>commit new file</code></p>
-<p>浏览器中打开<code>lxrlxrlxr2.github.io</code></p>
-<h3 id="三、官网下载git"><a href="#三、官网下载git" class="headerlink" title="三、官网下载git"></a>三、官网下载git</h3><p><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a></p>
-<p>检查是否安装好</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git</span><br></pre></td></tr></table></figure>
+    // comment system
+    .container
+      hr
+      include _partial/comments
 
-
-
-<h3 id="四、githubSSH配置"><a href="#四、githubSSH配置" class="headerlink" title="四、githubSSH配置"></a>四、githubSSH配置</h3><ul>
-<li><p>安装路径下打开git</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"140*****62@qq.com"</span></span><br></pre></td></tr></table></figure>
-
-<p>可以直接一直回车</p>
-</li>
-<li><p>打开github / settings / SSH and GPG keys</p>
-<p>点击<code>New SSH key</code></p>
-<p>title : 随便写</p>
-<p>key : <code>C:\Users\Alice\.ssh\id_rsa.pub</code></p>
-<p>点击<code>Add</code>，即完成</p>
-</li>
-</ul>
-<h3 id="五、本地hexo"><a href="#五、本地hexo" class="headerlink" title="五、本地hexo"></a>五、本地hexo</h3><p>官方文档 <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">https://hexo.io/zh-cn/</a></p>
-<p>新建文件夹，cmd到文件夹内</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="六、hexo发布到github上"><a href="#六、hexo发布到github上" class="headerlink" title="六、hexo发布到github上"></a>六、hexo发布到github上</h3><ul>
-<li><p>将文件夹在编辑器中打开</p>
-</li>
-<li><p>打开_config.yml文件</p>
-<ul>
-<li><p>修改<code># Deployment</code></p>
-<p><code>repo</code>在仓库中复制链接🔗</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https:&#x2F;&#x2F;github.com&#x2F;lxrlxrlxr&#x2F;lxrlxrlxr2.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改<code># URL</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url: https://lxrlxrlxr2.github.io</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改<code># Site</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">title: lxr_blog</span><br><span class="line">author: 大瑞</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>本地执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s -p</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装插件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置github信息</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email <span class="string">"140*****62@qq.com"</span></span><br><span class="line">git config --global user.name <span class="string">"lxr"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>生成提交命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p><img src="E:%5Cmd%5Cpic%5Cgit4.png" alt=""></p>
-</li>
-<li><p>打开网址即可</p>
-</li>
-</ul>
-<h3 id="七、换主题"><a href="#七、换主题" class="headerlink" title="七、换主题"></a>七、换主题</h3><p><a href="https://hexo.bootcss.com/themes/" target="_blank" rel="noopener">https://hexo.bootcss.com/themes/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://lxrlxrlxr.github.io/2020/04/06/My-New-Post/" data-id="ck8nylgtw00009ov3dc2jc41k" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2020/04/11/CSS%E5%B8%83%E5%B1%80/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          CSS布局
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/04/04/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/08/28/test01/">test01</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/28/src/test1/">src/test1</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/18/vue-route/">vue-route</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/11/CSS%E5%B8%83%E5%B1%80/">CSS布局</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/06/My-New-Post/">My New Post</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 大瑞<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>

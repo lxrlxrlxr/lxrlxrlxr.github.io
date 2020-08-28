@@ -1,313 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+extends base
 
-  
-  <title>vue-route | lxr_blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="vue-router[toc] 本地安装1&#96;npm install vue-router&#96;  main.js中  导入 use一下 创建路由 挂载到vue实例上  配置规则通过routes属性配置地址和路由管理的组件关系 main.js中  导入组件 routes属性中进行配置关系 path：设置地址 component：设置组件 可以配置多个  路由出口希望匹配到的组件显示在哪里，就在哪里设置一">
-<meta property="og:type" content="article">
-<meta property="og:title" content="vue-route">
-<meta property="og:url" content="https://lxrlxrlxr.github.io/2020/05/18/vue-route/index.html">
-<meta property="og:site_name" content="lxr_blog">
-<meta property="og:description" content="vue-router[toc] 本地安装1&#96;npm install vue-router&#96;  main.js中  导入 use一下 创建路由 挂载到vue实例上  配置规则通过routes属性配置地址和路由管理的组件关系 main.js中  导入组件 routes属性中进行配置关系 path：设置地址 component：设置组件 可以配置多个  路由出口希望匹配到的组件显示在哪里，就在哪里设置一">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-18T05:36:02.569Z">
-<meta property="article:modified_time" content="2020-08-21T08:32:51.612Z">
-<meta property="article:author" content="大瑞">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="lxr_blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+block title
+  title= page.title + " | " + config.title
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+block main
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">lxr_blog</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://lxrlxrlxr.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-vue-route" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/18/vue-route/" class="article-date">
-  <time datetime="2020-05-18T05:36:02.569Z" itemprop="datePublished">2020-05-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      vue-route
-    </h1>
-  
+  // gallery that comes before the header
+  if page.photos
+     if page.photos.length
+      .article-gallery
+        .article-gallery-photos.container
+          for photo in page.photos
+            a.article-gallery-img.fancybox(href=url_for(photo), rel="gallery_" + page._id)
+              img(src=url_for(photo), itemprop="image")
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h1><p>[toc]</p>
-<h4 id="本地安装"><a href="#本地安装" class="headerlink" title="本地安装"></a>本地安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`npm install vue-router`</span><br></pre></td></tr></table></figure>
+  .wrapper
+    .container.post-header
+      h1: = page.title
 
-<p>main.js中</p>
-<ol>
-<li>导入</li>
-<li>use一下</li>
-<li>创建路由</li>
-<li>挂载到vue实例上</li>
-</ol>
-<h4 id="配置规则"><a href="#配置规则" class="headerlink" title="配置规则"></a>配置规则</h4><p>通过routes属性配置<code>地址</code>和路由管理的<code>组件</code>关系</p>
-<p>main.js中</p>
-<ol>
-<li>导入组件</li>
-<li>routes属性中进行配置关系</li>
-<li>path：设置地址</li>
-<li>component：设置组件</li>
-<li>可以配置多个</li>
-</ol>
-<h4 id="路由出口"><a href="#路由出口" class="headerlink" title="路由出口"></a>路由出口</h4><p>希望匹配到的组件显示在哪里，就在哪里设置一个<code>router-view</code>标签</p>
-<h4 id="声明式导航"><a href="#声明式导航" class="headerlink" title="声明式导航"></a>声明式导航</h4><p>通过<code>router-link</code>标签设置<code>to</code>属性为地址可以实现点击切换</p>
-<h4 id="编程式导航"><a href="#编程式导航" class="headerlink" title="编程式导航"></a>编程式导航</h4><p>组件中通过<code>this.$router.push(地址)</code>可以通过代码实现切换</p>
-<h4 id="路由传参"><a href="#路由传参" class="headerlink" title="路由传参"></a>路由传参</h4><p>在地址后面写上<code>?</code>分隔：分隔两段数据</p>
-<p>通过<code>key = value &amp; key2 = value</code>的方式添加参数，value为获取数据的值</p>
-<p>组件中通过<code>this.$route.query</code>访问对应的<code>key</code>即可获取数据</p>
-<div id="echarts8186" style="width: 85%;height: 400px;margin: 0 auto"></div>
-<script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts8186'));
-
-        // 指定图表的配置项和数据
-        var option = {
-    tooltip : {
-        trigger: 'axis',
-        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-        }
-    },
-    legend: {
-        data:['利润', '支出', '收入']
-    },
-    grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
-    },
-    xAxis : [
-        {
-            type : 'value'
-        }
-    ],
-    yAxis : [
-        {
-            type : 'category',
-            axisTick : {show: false},
-            data : ['周一','周二','周三','周四','周五','周六','周日']
-        }
-    ],
-    series : [
-        {
-            name:'利润',
-            type:'bar',
-            itemStyle : {
-                normal: {
-                    label: {show: true, position: 'inside'}
-                }
-            },
-            data:[200, 170, 240, 244, 200, 220, 210]
-        },
-        {
-            name:'收入',
-            type:'bar',
-            stack: '总量',
-            itemStyle: {
-                normal: {
-                    label : {show: true}
-                }
-            },
-            data:[320, 302, 341, 374, 390, 450, 420]
-        },
-        {
-            name:'支出',
-            type:'bar',
-            stack: '总量',
-            itemStyle: {normal: {
-                label : {show: true, position: 'left'}
-            }},
-            data:[-120, -132, -101, -134, -190, -230, -210]
-        }
-    ]
-};
-
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-</script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://lxrlxrlxr.github.io/2020/05/18/vue-route/" data-id="ckac23npq0000v4v3cpdlabdz" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2020/08/28/src/test1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          src/test1
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/04/11/CSS%E5%B8%83%E5%B1%80/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">CSS布局</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
-    </div>
-  </div>
+  .wrapper
+    .container.meta
+      .post-time= page.date.format(config.date_format)
+      if (page.categories && page.categories.length)
+        .post-categories
+          != list_categories(page.categories, {show_count: false, class: 'post-category', style: 'none', separator: '>'})
+      if (page.tags && page.tags.length)
+        .post-tags
+          != list_tags(page.tags, {show_count: false, class: 'post-tag', style:'none', separator:'/'})
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/08/28/test01/">test01</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/28/src/test1/">src/test1</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/18/vue-route/">vue-route</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/11/CSS%E5%B8%83%E5%B1%80/">CSS布局</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/06/My-New-Post/">My New Post</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+  article
+    .container.post
+      != page.content
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 大瑞<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
+    // comment system
+    .container
+      hr
+      include _partial/comments
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>
